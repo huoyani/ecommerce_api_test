@@ -1,0 +1,20 @@
+{'name': '登录-正向-用户名密码正确', 'request': {'method': 'POST', 'url': '/api/login', 'json': {'username': 'test01', 'password': '123456'}}, 'validate': [{'eq': ['status_code', 200]}, {'eq': ['body.code', 200]}, {'eq': ['body.msg', '登录成功']}, {'exists': ['body.data.token']}]}
+
+==== 登录-正向-用户名密码正确 =====
+
+====请求信息====
+方法：POST,URL:http://127.0.0.1:8080/api/login
+请求头：{}
+请求体：{'username': 'test01', 'password': '123456'}
+====响应信息====
+状态码：200
+响应体：{
+  "code": 200,
+  "data": {
+    "token": "valid_token_123",
+    "user_id": 1001,
+    "username": "test01"
+  },
+  "msg": "\u767b\u5f55\u6210\u529f"
+}
+

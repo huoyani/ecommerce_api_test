@@ -1,0 +1,31 @@
+- name: 用户信息-正向-有效token
+  request:
+    method: GET
+    url: /api/userinfo
+    headers:
+      token: ${token}
+  validate:
+    - eq: [status_code, 200]
+    - eq: [body.code, 200]
+    - eq: [body.data.username, test01]
+    - eq: [body.data.role, user]
+
+- name: 用户信息-反向-token缺失
+  request:
+    method: GET
+    url: /api/userinfo
+  validate:
+    - eq: [status_code, 403]
+    - eq: [body.code, 403]
+    - eq: [body.msg, token不能为空]
+
+- name: 用户信息-反向-token失效
+  request:
+    method: GET
+    url: /api/userinfo
+    headers:
+      token: invalid_token_789
+  validate:
+    - eq: [status_code, 401]
+    - eq: [body.code, 401]
+    - eq: [body.msg, token已失效]

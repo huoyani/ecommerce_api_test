@@ -1,0 +1,21 @@
+{'name': '用户信息-正向-有效token', 'request': {'method': 'GET', 'url': '/api/userinfo', 'headers': {'token': '${token}'}}, 'validate': [{'eq': ['status_code', 200]}, {'eq': ['body.code', 200]}, {'eq': ['body.data.username', 'test01']}, {'eq': ['body.data.role', 'user']}]}
+
+==== 用户信息-正向-有效token =====
+
+====请求信息====
+方法：GET,URL:http://127.0.0.1:8080/api/userinfo
+请求头：{'token': 'valid_token_123'}
+请求体：{}
+====响应信息====
+状态码：200
+响应体：{
+  "code": 200,
+  "data": {
+    "password": "123456",
+    "role": "user",
+    "user_id": 1001,
+    "username": "test01"
+  },
+  "msg": "success"
+}
+

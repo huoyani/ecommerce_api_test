@@ -1,0 +1,15 @@
+{'name': '登录-反向-密码错误', 'request': {'method': 'POST', 'url': '/api/login', 'json': {'username': 'test01', 'password': '654321'}}, 'validate': [{'eq': ['status_code', 401]}, {'eq': ['body.code', 401]}, {'eq': ['body.msg', '用户名/密码错误']}]}
+
+==== 登录-反向-密码错误 =====
+
+====请求信息====
+方法：POST,URL:http://127.0.0.1:8080/api/login
+请求头：{}
+请求体：{'username': 'test01', 'password': '654321'}
+====响应信息====
+状态码：401
+响应体：{
+  "code": 401,
+  "msg": "\u7528\u6237\u540d/\u5bc6\u7801\u9519\u8bef"
+}
+

@@ -1,0 +1,22 @@
+{'name': '查询订单-正向-有效订单ID', 'request': {'method': 'GET', 'url': '/api/order/query', 'headers': {'token': '${token}'}, 'params': {'order_id': '${order_id}'}}, 'validate': [{'eq': ['status_code', 200]}, {'eq': ['body.code', 200]}, {'eq': ['body.data.goods_id', 1001]}, {'eq': ['body.data.num', 2]}]}
+
+==== 查询订单-正向-有效订单ID =====
+
+====请求信息====
+方法：GET,URL:http://127.0.0.1:8080/api/order/query
+请求头：{'token': 'valid_token_123'}
+请求体：{}
+====响应信息====
+状态码：200
+响应体：{
+  "code": 200,
+  "data": {
+    "goods_id": 1001,
+    "num": 2,
+    "order_id": "ORD17743599476741001",
+    "status": "created",
+    "user_id": 1001
+  },
+  "msg": "success"
+}
+

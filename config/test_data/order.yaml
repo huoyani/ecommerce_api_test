@@ -1,0 +1,57 @@
+- name: 创建订单-正向-参数完整
+  request:
+    method: POST
+    url: /api/order/create
+    headers:
+      token: ${token}
+    json:
+      goods_id: 1001
+      num: 2
+  extract:
+    order_id: body.data.order_id
+  validate:
+    - eq: [status_code, 200]
+    - eq: [body.code, 200]
+    - eq: [body.msg, 订单创建成功]
+    - exists: [body.data.order_id]
+
+
+- name: 创建订单-反向-商品ID缺失
+  request:
+    method: POST
+    url: /api/order/create
+    headers:
+      token: ${token}
+    json:
+      num: 2
+  validate:
+    - eq: [status_code, 400]
+    - eq: [body.code, 400]
+    - eq: [body.msg, 商品ID不能为空]
+
+- name: 查询订单-正向-有效订单ID
+  request:
+    method: GET
+    url: /api/order/query
+    headers:
+      token: ${token}
+    params:
+      order_id: ${order_id}
+  validate:
+    - eq: [status_code, 200]
+    - eq: [body.code, 200]
+    - eq: [body.data.goods_id, 1001]
+    - eq: [body.data.num, 2]
+
+- name: 查询订单-反向-订单不存在
+  request:
+    method: GET
+    url: /api/order/query
+    headers:
+      token: ${token}
+    params:
+      order_id: ORD99999999999
+  validate:
+    - eq: [status_code, 404]
+    - eq: [body.code, 404]
+    - eq: [body.msg, 订单不存在]

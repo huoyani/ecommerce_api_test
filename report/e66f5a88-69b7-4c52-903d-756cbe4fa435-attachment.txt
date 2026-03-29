@@ -1,0 +1,19 @@
+{'name': '查询当前用户订单列表', 'request': {'method': 'GET', 'url': '/api/order/list', 'headers': {'token': '${token}'}}, 'validate': [{'eq': ['status_code', 200]}, {'eq': ['body.code', 200]}, {'exists': ['body.data.list']}, {'exists': ['body.data.total']}]}
+
+==== 查询当前用户订单列表 =====
+
+====请求信息====
+方法：GET,URL:http://127.0.0.1:8080/api/order/list
+请求头：{'token': 'valid_token_123'}
+请求体：{}
+====响应信息====
+状态码：200
+响应体：{
+  "code": 200,
+  "data": {
+    "list": [],
+    "total": 0
+  },
+  "msg": "success"
+}
+

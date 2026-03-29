@@ -1,0 +1,15 @@
+{'name': '用户信息-反向-token缺失', 'request': {'method': 'GET', 'url': '/api/userinfo'}, 'validate': [{'eq': ['status_code', 403]}, {'eq': ['body.code', 403]}, {'eq': ['body.msg', 'token不能为空']}]}
+
+==== 用户信息-反向-token缺失 =====
+
+====请求信息====
+方法：GET,URL:http://127.0.0.1:8080/api/userinfo
+请求头：{}
+请求体：{}
+====响应信息====
+状态码：403
+响应体：{
+  "code": 403,
+  "msg": "token\u4e0d\u80fd\u4e3a\u7a7a"
+}
+

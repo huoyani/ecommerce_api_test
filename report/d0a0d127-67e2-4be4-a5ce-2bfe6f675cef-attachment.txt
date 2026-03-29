@@ -1,0 +1,15 @@
+{'name': '查询订单-反向-订单不存在', 'request': {'method': 'GET', 'url': '/api/order/query', 'headers': {'token': '${token}'}, 'params': {'order_id': 'ORD99999999999'}}, 'validate': [{'eq': ['status_code', 404]}, {'eq': ['body.code', 404]}, {'eq': ['body.msg', '订单不存在']}]}
+
+==== 查询订单-反向-订单不存在 =====
+
+====请求信息====
+方法：GET,URL:http://127.0.0.1:8080/api/order/query
+请求头：{'token': 'valid_token_123'}
+请求体：{}
+====响应信息====
+状态码：404
+响应体：{
+  "code": 404,
+  "msg": "\u8ba2\u5355\u4e0d\u5b58\u5728"
+}
+

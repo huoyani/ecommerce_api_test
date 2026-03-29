@@ -1,0 +1,19 @@
+{'name': '创建订单-正向-参数完整', 'request': {'method': 'POST', 'url': '/api/order/create', 'headers': {'token': '${token}'}, 'json': {'goods_id': 1001, 'num': 2}}, 'extract': {'order_id': 'body.data.order_id'}, 'validate': [{'eq': ['status_code', 200]}, {'eq': ['body.code', 200]}, {'eq': ['body.msg', '订单创建成功']}, {'exists': ['body.data.order_id']}]}
+
+==== 创建订单-正向-参数完整 =====
+
+====请求信息====
+方法：POST,URL:http://127.0.0.1:8080/api/order/create
+请求头：{'token': 'valid_token_123'}
+请求体：{'goods_id': 1001, 'num': 2}
+====响应信息====
+状态码：200
+响应体：{
+  "code": 200,
+  "data": {
+    "order_id": "ORD17743599476741001"
+  },
+  "msg": "\u8ba2\u5355\u521b\u5efa\u6210\u529f"
+}
+
+提取到order_id = ORD17743599476741001，已存入上下文

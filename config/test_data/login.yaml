@@ -1,0 +1,36 @@
+- name: 登录-正向-用户名密码正确
+  request:
+    method: POST
+    url: /api/login
+    json:
+      username: test01
+      password: "123456"
+  validate:
+    - eq: [ status_code,200 ]
+    - eq: [ body.code,200 ]
+    - eq: [ body.msg,登录成功 ]
+    - exists: [ body.data.token ]
+
+- name: 登录-反向-密码错误
+  request:
+    method: POST
+    url: /api/login
+    json:
+      username: test01
+      password: "654321"
+  validate:
+    - eq: [ status_code, 401 ]
+    - eq: [ body.code, 401 ]
+    - eq: [ body.msg, 用户名/密码错误 ]
+
+- name: 登录-反向-参数缺失
+  request:
+    method: POST
+    url: /api/login
+    json:
+      username: test01
+  validate:
+    - eq: [ status_code, 400 ]
+    - eq: [ body.code, 400 ]
+    - eq: [ body.msg, 用户名/密码不能为空 ]
+

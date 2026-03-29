@@ -1,0 +1,15 @@
+{'name': '创建订单-反向-商品ID缺失', 'request': {'method': 'POST', 'url': '/api/order/create', 'headers': {'token': '${token}'}, 'json': {'num': 2}}, 'validate': [{'eq': ['status_code', 400]}, {'eq': ['body.code', 400]}, {'eq': ['body.msg', '商品ID不能为空']}]}
+
+==== 创建订单-反向-商品ID缺失 =====
+
+====请求信息====
+方法：POST,URL:http://127.0.0.1:8080/api/order/create
+请求头：{'token': 'valid_token_123'}
+请求体：{'num': 2}
+====响应信息====
+状态码：400
+响应体：{
+  "code": 400,
+  "msg": "\u5546\u54c1ID\u4e0d\u80fd\u4e3a\u7a7a"
+}
+

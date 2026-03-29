@@ -1,0 +1,15 @@
+{'name': '用户信息-反向-token失效', 'request': {'method': 'GET', 'url': '/api/userinfo', 'headers': {'token': 'invalid_token_789'}}, 'validate': [{'eq': ['status_code', 401]}, {'eq': ['body.code', 401]}, {'eq': ['body.msg', 'token已失效']}]}
+
+==== 用户信息-反向-token失效 =====
+
+====请求信息====
+方法：GET,URL:http://127.0.0.1:8080/api/userinfo
+请求头：{'token': 'invalid_token_789'}
+请求体：{}
+====响应信息====
+状态码：401
+响应体：{
+  "code": 401,
+  "msg": "token\u5df2\u5931\u6548"
+}
+

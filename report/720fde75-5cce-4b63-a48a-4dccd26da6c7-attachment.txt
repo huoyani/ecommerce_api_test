@@ -1,0 +1,15 @@
+{'name': '删除已创建的订单', 'request': {'method': 'DELETE', 'url': '/api/order/delete', 'headers': {'token': '${token}'}, 'json': {'order_id': '${order_id}'}}, 'validate': [{'eq': ['status_code', 200]}, {'eq': ['body.code', 200]}, {'eq': ['body.msg', '订单删除成功']}]}
+
+==== 删除已创建的订单 =====
+
+====请求信息====
+方法：DELETE,URL:http://127.0.0.1:8080/api/order/delete
+请求头：{'token': 'valid_token_123'}
+请求体：{'order_id': '${order_id}'}
+====响应信息====
+状态码：404
+响应体：{
+  "code": 404,
+  "msg": "\u8ba2\u5355\u4e0d\u5b58\u5728"
+}
+

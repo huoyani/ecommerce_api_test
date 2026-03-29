@@ -1,0 +1,17 @@
+1.headers=case["request"]["headers"]和headers = case["request"].get("headers", {})的区别是什么
+2.编写测试脚本时，先看yaml里面request部分有哪些参数，然后res=RequestUtil.send_request(**params)即可（基础），再断言，断言是核心
+3.处理 YAML 中的extract节点，核心就 3 步：
+    从 YAML 中读取extract配置；
+    按字段路径从响应中提取数据；
+    存入Context供后续接口使用。
+# extract_config = {"order_id": "body.data.order_id"}
+# response = 创建订单成功的响应对象
+
+# 1. 响应转字典：res_json = {"code":200, "msg":"订单创建成功", "data":{"order_id":"OD123456"}}
+# 2. 遍历extract：var_name="order_id"，field_path="body.data.order_id"
+# 3. 拆分路径：path_parts = ["body", "data", "order_id"]
+# 4. 逐层取值：
+#    - 初始value = res_json
+#    - 跳过"body"，先取"data" → value = res_json["data"] → {"order_id":"OD123456"}
+#    - 再取"order_id" → value = {"order_id":"OD123456"}["order_id"] → "OD123456"
+# 5. 存入Context：Context.set("order_id", "OD123456")
