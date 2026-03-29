@@ -28,6 +28,15 @@ jobs:
       - name: 等待服务启动
         run: sleep 10
 
+      - name: 查看服务日志
+        run: |
+          echo "==== server.log ===="
+          cat server.log
+
+      - name: 检查服务是否启动
+        run: |
+          curl http://127.0.0.1:8080/api/login || echo "服务未启动"
+
       - name: 运行测试
         run: |
           pytest testcases/ --maxfail=1 --disable-warnings
