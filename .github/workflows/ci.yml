@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: 拉取代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 安装 Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
@@ -23,10 +23,10 @@ jobs:
 
       - name: 启动 mock_server
         run: |
-          nohup python mock_server.py &
+          nohup python mock_server.py > server.log 2>&1 &
 
       - name: 等待服务启动
-        run: sleep 5
+        run: sleep 10
 
       - name: 运行测试
         run: |
